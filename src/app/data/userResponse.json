@@ -1,0 +1,15 @@
+{
+  "username": "Marc Carranza",
+  "rooms": [
+    {
+      "id": "nanoid-room0",
+      "name": "OffWeekenders"
+    }
+  ],
+  "events": [
+    {
+      "id": "nanoid-event0",
+      "name": "Primavera Sound 2024"
+    }
+  ]
+}

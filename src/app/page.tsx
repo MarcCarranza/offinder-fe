@@ -1,15 +1,37 @@
+"use client";
+
+// Dependencies
+import { useEffect, useState } from "react";
+
 // Components
-import List from "../Components/List/List";
-import Nav from "../Components/Nav/Nav";
+import DashboardList from "../Components/DashboardList/DashboardList";
+
+// Types
+import { UserData } from "../Types/Dashboard";
+
+// Style
+import style from "./style.module.css";
 
 // Dummy data
-import * as listResponse from "../app/data/listResponse.json";
+import * as userRes from "../app/data/userResponse.json";
 
 export default function Home() {
+  const [userData, setUserData] = useState<UserData>({
+    username: "",
+    rooms: [],
+    events: [],
+  });
+
+  useEffect(() => {
+    setUserData(userRes);
+  }, []);
+
   return (
-    <main>
-      <List listData={listResponse.days} />
-      <Nav />
+    <main className={style.main}>
+      <DashboardList title={"Rooms"} content={userRes.rooms} />
+      <DashboardList title={"Events"} content={userRes.events} />
+
+      {/* <List listData={listRes.days} /> */}
     </main>
   );
 }

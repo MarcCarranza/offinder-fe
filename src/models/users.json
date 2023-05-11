@@ -1,13 +1,19 @@
 {
-    "users": [{
-        "id": "nanoid-user0",
-        "username": "Marc Carranza",
-        "rooms": [{
-            "id": "nanoid-room0"
-        }],
-        "lists": [{
-            "event_id": "nanoid-event0",
-            "content": "{}"
-        }]
-    }]
+  "users": [
+    {
+      "id": "nanoid-user0",
+      "username": "Marc Carranza",
+      "rooms": [
+        {
+          "id": "nanoid-room0"
+        }
+      ],
+      "events": [
+        {
+          "id": "nanoid-event0",
+          "content": "{}"
+        }
+      ]
+    }
+  ]
 }
