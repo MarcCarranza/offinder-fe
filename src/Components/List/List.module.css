@@ -1,0 +1,47 @@
+.list {
+  padding: 1rem;
+}
+
+.list__day {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.list__date {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.list__locationList {
+  padding: 0.25rem 0;
+}
+
+.location {
+}
+
+.location__name {
+  font-weight: 700;
+  padding: 0.5rem;
+}
+
+.location__concertList {
+}
+
+.concert {
+  border-top: 1px solid black;
+  padding: 0.5rem;
+  display: flex;
+}
+
+.concert:first-child {
+  border: none;
+}
+
+.concert__time {
+  padding-right: 1rem;
+}
+
+.concert__band {
+  font-weight: 700;
+}

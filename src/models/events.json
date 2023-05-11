@@ -1,0 +1,21 @@
+{
+    "events": [
+        {
+            "id": "nanoid-event0",
+            "name": "Primavera Sound 2023",
+            "tz_offset": -120,
+            "concerts": [
+                {
+                    "name": "Keems",
+                    "day": 0,
+                    "month": 5,
+                    "location": "Apolo",
+                    "timeslot": { 
+                        "start": "00:00",
+                        "end": "12:00"
+                    }
+                }
+            ]
+        }
+    ]
+}

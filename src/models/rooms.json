@@ -1,0 +1,12 @@
+{
+    "rooms": [
+        {
+            "id": "nanoid-room0",
+            "protected": true,
+            "password": "plastic",
+            "users": [{
+                "id": "nanoid-user0"
+            }]
+        }
+    ]
+}

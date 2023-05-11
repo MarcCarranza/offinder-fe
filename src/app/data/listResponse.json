@@ -1,0 +1,42 @@
+{
+  "days": [
+    {
+      "date": "1st May",
+      "locations": [
+        {
+          "name": "Ray Ban",
+          "concerts": [
+            {
+              "id": "nanoid-concert0",
+              "users": ["nanoid-user0"],
+              "time": "00:00 - 12:00",
+              "priority": 0,
+              "band": "Keems"
+            },
+            {
+              "id": "nanoid-concert1",
+              "users": ["nanoid-user0"],
+              "time": "00:00 - 12:00",
+              "priority": 0,
+              "band": "NBT"
+            },
+            {
+              "id": "nanoid-concert2",
+              "users": ["nanoid-user0"],
+              "time": "00:00 - 12:00",
+              "priority": 0,
+              "band": "RSF"
+            },
+            {
+              "id": "nanoid-concert3",
+              "users": ["nanoid-user0"],
+              "time": "00:00 - 12:00",
+              "priority": 0,
+              "band": "OffWeekender"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

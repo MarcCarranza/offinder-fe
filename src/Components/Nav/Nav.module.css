@@ -1,0 +1,37 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  background-color: white;
+  border-top: 1px solid rgb(var(--detail-red-clear));
+}
+
+.nav__button {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgb(var(--detail-red-clear));
+  padding: 1.2rem 0;
+  cursor: pointer;
+  transition: background 0.3s ease-in;
+  background-color: rgb(var(--detail-red));
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.nav__button:hover {
+  /* background-color: rgb(var(--detail-green)); */
+}
+
+.nav__button:nth-child(2) {
+  flex: 2;
+}
+
+.nav__button:last-child {
+  border: none;
+}
