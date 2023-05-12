@@ -1,9 +1,11 @@
 "use client";
 // Dependencies
+import { ReactElement, useContext, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Types
-import { ReactElement, useState } from "react";
+import { Menu } from "../../Types/Nav";
 
 // Style
 import style from "./Nav.module.css";
@@ -11,8 +13,9 @@ import style from "./Nav.module.css";
 // Icons
 import User from "../../../public/assets/user.svg";
 import Home from "../../../public/assets/home.svg";
+import Users from "../../../public/assets/users.svg";
 import Calendar from "../../../public/assets/calendar.svg";
-import Link from "next/link";
+import NavProvider, { NavContext } from "../../Context/NavProvider";
 
 type Props = {};
 
@@ -23,29 +26,46 @@ type BtnProps = {
   index: Menu;
 };
 
-enum Menu {
-  USER = 0,
-  DASHBOARD = 1,
-  TBD = 2,
-}
+const NAV_BUTTONS = [
+  {
+    route: "/user",
+    icon: User,
+    text: "User",
+    index: Menu.USER,
+  },
+  {
+    route: "/",
+    icon: Home,
+    text: "Home",
+    index: Menu.DASHBOARD,
+  },
+  {
+    route: "/rooms",
+    icon: Users,
+    text: "Rooms",
+    index: Menu.ROOMS,
+  },
+  {
+    route: "/events",
+    icon: Calendar,
+    text: "Events",
+    index: Menu.EVENTS,
+  },
+];
 
 export default function Nav({}: Props): ReactElement {
-  const [currentSection, setCurrentSection] = useState<number>(Menu.DASHBOARD);
-
-  const onPress = (section: Menu) => {
-    console.log("Pressed", section);
-    setCurrentSection(section);
-  };
+  const { current, setCurrent } = useContext(NavContext);
 
   // Render
   const renderButton = ({ route, icon, text, index }: BtnProps) => {
-    const selected = index === currentSection;
+    const selected = index === current;
 
     return (
       <Link
         href={route}
         className={style.nav__button}
-        onClick={() => onPress(index)}
+        onClick={() => setCurrent(index)}
+        key={index}
       >
         <div className={style.nav__button}>
           <div className={selected ? style.nav__btnSelected : ""}>
@@ -64,24 +84,9 @@ export default function Nav({}: Props): ReactElement {
 
   return (
     <nav className={style.nav}>
-      {renderButton({
-        route: "/user",
-        icon: User,
-        text: "User",
-        index: Menu.USER,
-      })}
-      {renderButton({
-        route: "/",
-        icon: Home,
-        text: "Home",
-        index: Menu.DASHBOARD,
-      })}
-      {renderButton({
-        route: "/room",
-        icon: Calendar,
-        text: "Calendar",
-        index: Menu.TBD,
-      })}
+      {NAV_BUTTONS.map(({ route, icon, text, index }) =>
+        renderButton({ route, icon, text, index })
+      )}
     </nav>
   );
 }

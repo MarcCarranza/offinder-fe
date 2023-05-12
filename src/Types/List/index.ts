@@ -1,5 +1,5 @@
 export type RoomData = {
-  room: boolean;
+  name: string;
   days: Day[];
 };
 

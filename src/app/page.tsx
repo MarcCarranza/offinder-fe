@@ -28,10 +28,12 @@ export default function Home() {
 
   return (
     <main className={style.main}>
-      <DashboardList title={"Rooms"} content={userRes.rooms} />
-      <DashboardList title={"Events"} content={userRes.events} />
-
-      {/* <List listData={listRes.days} /> */}
+      <DashboardList title={"Rooms"} content={userData.rooms} route="/rooms" />
+      <DashboardList
+        title={"Events"}
+        content={userData.events}
+        route="/event"
+      />
     </main>
   );
 }
