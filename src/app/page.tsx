@@ -14,6 +14,7 @@ import style from "./style.module.css";
 
 // Dummy data
 import * as userRes from "../data/userResponse.json";
+import { Menu } from "../Types/Nav";
 
 export default function Home() {
   const [userData, setUserData] = useState<UserData>({
@@ -28,11 +29,17 @@ export default function Home() {
 
   return (
     <main className={style.main}>
-      <DashboardList title={"Rooms"} content={userData.rooms} route="/rooms" />
+      <DashboardList
+        title={"Rooms"}
+        content={userData.rooms}
+        route="/rooms"
+        navIndex={Menu.ROOMS}
+      />
       <DashboardList
         title={"Events"}
         content={userData.events}
         route="/event"
+        navIndex={Menu.EVENTS}
       />
     </main>
   );

@@ -1,25 +1,33 @@
 "use client";
 
+// Dependencies
 import { ReactElement, useContext } from "react";
-import { ListContent } from "../../Types/Dashboard";
+import Link from "next/link";
+
+// Providers
+import { NavContext } from "../../Context/NavProvider";
 
 // Style
 import style from "./DashboardList.module.css";
-import Link from "next/link";
-import { NavContext } from "../../Context/NavProvider";
+
+// Types
+import { Menu } from "../../Types/Nav";
+import { ListContent } from "../../Types/Dashboard";
 
 type Props = {
   title: string;
   content: ListContent[];
   route: string;
+  navIndex: Menu;
 };
 
 export default function DashboardList({
   title,
   content,
   route,
+  navIndex,
 }: Props): ReactElement {
-  const { current, setCurrent } = useContext(NavContext);
+  const { setCurrent } = useContext(NavContext);
 
   return (
     <div className={style.dashboardList}>
@@ -27,7 +35,11 @@ export default function DashboardList({
       <ul>
         {content.map((element) => {
           return (
-            <Link href={`${route}/${element.id}`} key={element.id}>
+            <Link
+              href={`${route}/${element.id}`}
+              key={element.id}
+              onClick={() => setCurrent(navIndex)}
+            >
               <li className={style.dashboardList__btn}>{element.name}</li>
             </Link>
           );
