@@ -19,12 +19,8 @@ body {
 body {
   /* Variables */
   --background: 238, 254, 249;
-  --nav-bg: 250, 235, 220;
-  --nav-detail: 255, 180, 120;
-  --detail-green: 11, 218, 180;
-  --detail-green-clear: 152, 249, 224;
-  --utility-green: 15, 208, 164;
-  --utility-green-hover: 38, 249, 185;
+  --orange-bg: 250, 235, 220;
+  --orange-detail: 255, 180, 120;
 
   background-color: rgb(245, 245, 245);
 }

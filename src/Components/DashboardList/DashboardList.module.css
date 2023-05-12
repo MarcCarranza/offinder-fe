@@ -12,9 +12,9 @@
 .dashboardList__btn {
   padding: 0.5rem 0.5rem;
   background-color: rgba(0, 0, 0, 0.04);
-  box-shadow: 0px 0px 5px 0px rgba(4, 89, 75, 0.3);
+  box-shadow: 0px 0px 5px 0px rgba(1, 1, 1, 0.1);
   border-radius: 5px;
-  background-color: rgb(var(--detail-green));
+  background-color: rgb(var(--orange-bg));
   cursor: pointer;
-  color: rgb(12, 36, 32);
+  color: black;
 }

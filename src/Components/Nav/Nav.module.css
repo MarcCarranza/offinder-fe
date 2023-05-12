@@ -3,7 +3,7 @@
   bottom: 0;
   width: 100vw;
   display: flex;
-  background-color: rgb(var(--nav-bg));
+  background-color: rgb(var(--orange-bg));
   justify-content: center;
   align-items: center;
 }
@@ -29,7 +29,7 @@
 }
 
 .nav__btnSelected {
-  background-color: rgb(var(--nav-detail));
+  background-color: rgb(var(--orange-detail));
   padding: 0.25rem 1rem;
   border-radius: 1rem;
 }
