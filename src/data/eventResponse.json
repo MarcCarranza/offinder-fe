@@ -10,11 +10,26 @@
             {
               "id": "nanoid-concert0",
               "users": [
-                "nanoid-user0",
-                "nanoid-user1",
-                "nanoid-user2",
-                "nanoid-user3",
-                "nanoid-user4"
+                {
+                  "id": "nanoid-user0",
+                  "username": "Marc Carranza",
+                  "priority": -1
+                },
+                {
+                  "id": "nanoid-user1",
+                  "username": "Silvia Esteban",
+                  "priority": 0
+                },
+                {
+                  "id": "nanoid-user2",
+                  "username": "Patricio Ortiz",
+                  "priority": 1
+                },
+                {
+                  "id": "nanoid-user3",
+                  "username": "Ada Colau",
+                  "priority": 2
+                }
               ],
               "time": "00:00 - 12:00",
               "priority": 0,
@@ -22,21 +37,36 @@
             },
             {
               "id": "nanoid-concert1",
-              "users": ["nanoid-user0"],
+              "users": [
+                {
+                  "id": "nanoid-user0",
+                  "username": "Marc Carranza"
+                }
+              ],
               "time": "00:00 - 12:00",
               "priority": 0,
               "band": "NBT"
             },
             {
               "id": "nanoid-concert2",
-              "users": ["nanoid-user0"],
+              "users": [
+                {
+                  "id": "nanoid-user0",
+                  "username": "Marc Carranza"
+                }
+              ],
               "time": "00:00 - 12:00",
               "priority": 0,
               "band": "RSF"
             },
             {
               "id": "nanoid-concert3",
-              "users": ["nanoid-user0"],
+              "users": [
+                {
+                  "id": "nanoid-user0",
+                  "username": "Marc Carranza"
+                }
+              ],
               "time": "00:00 - 12:00",
               "priority": 0,
               "band": "OffWeekender"

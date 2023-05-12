@@ -15,8 +15,14 @@ type Location = {
 
 export type Concert = {
   id: string;
-  users: string[];
+  users: User[];
   time: string;
   priority: number;
   band: string;
+};
+
+type User = {
+  id: string;
+  username: string;
+  priority: number;
 };

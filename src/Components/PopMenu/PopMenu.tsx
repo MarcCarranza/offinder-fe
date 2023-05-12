@@ -12,25 +12,12 @@ import { Concert } from "../../Types/List";
 
 // Icons
 import Close from "../../../public/assets/x-square.svg";
+import { PRIORITY_TYPES } from "../../Constants/PopMenu";
 
 type Props = {
   data: Concert | null;
   setOpen: Function;
 };
-
-enum Priorities {
-  HIGH = 0,
-  MEDIUM = 1,
-  LOW = 2,
-  NONE = 3,
-}
-
-const PRIORITY_TYPES = [
-  { value: Priorities.HIGH, text: "🔝" },
-  { value: Priorities.MEDIUM, text: "🔥" },
-  { value: Priorities.LOW, text: "👍" },
-  { value: Priorities.NONE, text: "👎" },
-];
 
 export default function PopMenu({ data, setOpen }: Props): ReactElement {
   // TODO: Request helper for POST update
@@ -39,6 +26,23 @@ export default function PopMenu({ data, setOpen }: Props): ReactElement {
   // Event Handling
   const stopBubbling = (event: MouseEvent<HTMLElement>) => {
     event.stopPropagation();
+  };
+
+  // Functionalities
+  const getPriorityEmoji = (index: number) => {
+    console.log(index);
+    switch (index) {
+      case -1:
+        return "";
+      case 0:
+        return "🔝";
+      case 1:
+        return "🔥";
+      case 2:
+        return "👍";
+      case 3:
+        return "👎";
+    }
   };
 
   return (
@@ -73,15 +77,18 @@ export default function PopMenu({ data, setOpen }: Props): ReactElement {
             })}
           </div>
         </div>
-        {/* Who's going */}
+        {/* Who's interested */}
         <div className={style.popMenu__users}>
           {/* TODO: i18n */}
-          <legend className={style.users__legend}>Who's going</legend>
+          <legend className={style.users__legend}>Who's interested</legend>
           <ul className={style.users__list}>
             {concertData?.users.map((user) => {
               return (
-                <li className={style.users__user} key={user}>
-                  {user}
+                <li className={style.users__user} key={user.id}>
+                  <p className={style.users__username}>{user.username}</p>
+                  <p className={style.user__priority}>
+                    {getPriorityEmoji(user.priority)}
+                  </p>
                 </li>
               );
             })}
