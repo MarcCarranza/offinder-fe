@@ -33,6 +33,7 @@ export default function Nav({}: Props): ReactElement {
   const [currentSection, setCurrentSection] = useState<number>(Menu.DASHBOARD);
 
   const onPress = (section: Menu) => {
+    console.log("Pressed", section);
     setCurrentSection(section);
   };
 
@@ -41,8 +42,12 @@ export default function Nav({}: Props): ReactElement {
     const selected = index === currentSection;
 
     return (
-      <Link href={route} className={style.nav__button}>
-        <div className={style.nav__button} onClick={() => onPress(index)}>
+      <Link
+        href={route}
+        className={style.nav__button}
+        onClick={() => onPress(index)}
+      >
+        <div className={style.nav__button}>
           <div className={selected ? style.nav__btnSelected : ""}>
             <Image src={icon} width={20} height={20} alt="User" />
           </div>

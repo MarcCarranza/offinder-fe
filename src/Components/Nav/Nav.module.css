@@ -20,14 +20,6 @@
   font-size: 0.75rem;
 }
 
-.nav__button:nth-child(2) {
-  flex: 2;
-}
-
-.nav__button:last-child {
-  border: none;
-}
-
 .nav__btnSelected {
   background-color: rgb(var(--orange-detail));
   padding: 0.25rem 1rem;
