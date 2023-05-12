@@ -13,7 +13,7 @@ type Location = {
   concerts: Concert[];
 };
 
-type Concert = {
+export type Concert = {
   id: string;
   users: string[];
   time: string;

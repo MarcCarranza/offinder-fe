@@ -4,18 +4,17 @@ import { ReactElement, useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Context
+import { NavContext } from "../../Context/NavProvider";
+
+// Constants
+import { NAV_BUTTONS } from "../../Constants/Nav";
+
 // Types
 import { Menu } from "../../Types/Nav";
 
 // Style
 import style from "./Nav.module.css";
-
-// Icons
-import User from "../../../public/assets/user.svg";
-import Home from "../../../public/assets/home.svg";
-import Users from "../../../public/assets/users.svg";
-import Calendar from "../../../public/assets/calendar.svg";
-import NavProvider, { NavContext } from "../../Context/NavProvider";
 
 type Props = {};
 
@@ -24,40 +23,14 @@ type BtnProps = {
   icon: any;
   text: string;
   index: Menu;
+  altText: string;
 };
-
-const NAV_BUTTONS = [
-  {
-    route: "/user",
-    icon: User,
-    text: "User",
-    index: Menu.USER,
-  },
-  {
-    route: "/",
-    icon: Home,
-    text: "Home",
-    index: Menu.DASHBOARD,
-  },
-  {
-    route: "/rooms",
-    icon: Users,
-    text: "Rooms",
-    index: Menu.ROOMS,
-  },
-  {
-    route: "/events",
-    icon: Calendar,
-    text: "Events",
-    index: Menu.EVENTS,
-  },
-];
 
 export default function Nav({}: Props): ReactElement {
   const { current, setCurrent } = useContext(NavContext);
 
   // Render
-  const renderButton = ({ route, icon, text, index }: BtnProps) => {
+  const renderButton = ({ route, icon, text, index, altText }: BtnProps) => {
     const selected = index === current;
 
     return (
@@ -69,7 +42,7 @@ export default function Nav({}: Props): ReactElement {
       >
         <div className={style.nav__button}>
           <div className={selected ? style.nav__btnSelected : ""}>
-            <Image src={icon} width={20} height={20} alt="User" />
+            <Image src={icon} width={20} height={20} alt={altText} />
           </div>
           <p
             className={style.navButton__text}
@@ -84,9 +57,7 @@ export default function Nav({}: Props): ReactElement {
 
   return (
     <nav className={style.nav}>
-      {NAV_BUTTONS.map(({ route, icon, text, index }) =>
-        renderButton({ route, icon, text, index })
-      )}
+      {NAV_BUTTONS.map((button) => renderButton(button))}
     </nav>
   );
 }

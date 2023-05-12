@@ -1,21 +1,27 @@
 "use client";
 
 // Dependencies
+import { ReactElement, useState } from "react";
 
 // Types
-import { ReactElement } from "react";
-import { Day } from "../../Types/List";
+import { Concert, Day } from "../../Types/List";
 
 // Style
 import style from "./List.module.css";
+import PopMenu from "../PopMenu/PopMenu";
 
 type Props = {
   listData: Day[];
 };
 
 export default function List({ listData }: Props): ReactElement {
+  const [menuOpen, setOpen] = useState<boolean>(false);
+  const [selectedConcert, setConcert] = useState<Concert | null>(null);
   // Handlers
-  // const onPressConcert = () => {};
+  const onPressConcert = (concert: Concert) => {
+    setOpen(true);
+    setConcert(concert);
+  };
 
   return (
     <div className={style.list}>
@@ -38,7 +44,11 @@ export default function List({ listData }: Props): ReactElement {
                         {/* Concerts render */}
                         {location.concerts.map((concert) => {
                           return (
-                            <li key={concert.id} className={style.concert}>
+                            <li
+                              key={concert.id}
+                              className={style.concert}
+                              onClick={(e) => onPressConcert(concert)}
+                            >
                               <span className={style.concert__time}>
                                 {concert.time}
                               </span>
@@ -57,6 +67,7 @@ export default function List({ listData }: Props): ReactElement {
           );
         })}
       </div>
+      {menuOpen && <PopMenu data={selectedConcert} setOpen={setOpen} />}
     </div>
   );
 }

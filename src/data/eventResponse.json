@@ -9,7 +9,13 @@
           "concerts": [
             {
               "id": "nanoid-concert0",
-              "users": ["nanoid-user0"],
+              "users": [
+                "nanoid-user0",
+                "nanoid-user1",
+                "nanoid-user2",
+                "nanoid-user3",
+                "nanoid-user4"
+              ],
               "time": "00:00 - 12:00",
               "priority": 0,
               "band": "Keems"
