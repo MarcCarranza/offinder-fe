@@ -13,7 +13,7 @@ import { UserData } from "../Types/Dashboard";
 import style from "./style.module.css";
 
 // Dummy data
-import * as userRes from "../app/data/userResponse.json";
+import * as userRes from "../data/userResponse.json";
 
 export default function Home() {
   const [userData, setUserData] = useState<UserData>({

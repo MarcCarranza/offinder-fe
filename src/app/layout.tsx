@@ -1,7 +1,11 @@
-import Header from "../Components/Header/Header";
-import Nav from "../Components/Nav/Nav";
-import "./globals.css";
+// Dependencies
 import { Inter } from "next/font/google";
+
+// Component
+import Nav from "../Components/Nav/Nav";
+
+// Style
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
