@@ -11,6 +11,7 @@ import { DataContext } from "../Context/DataProvider";
 
 // Dummy data
 import * as dummyData from "../data/appResponse.json";
+import { Button } from "../Components/Button/Button";
 
 export default function Home() {
   const { appData, setAppData } = useContext(DataContext);
@@ -28,5 +29,12 @@ export default function Home() {
     }
   };
 
-  return <main className={style.main}></main>;
+  return (
+    <main className={style.main}>
+      <div className={style.home__buttons}>
+        <Button text="Add Room" onClick={() => {}} />
+        <Button text="Add Event" onClick={() => {}} />
+      </div>
+    </main>
+  );
 }

@@ -1,8 +1,9 @@
 .dashboardList {
   background-color: white;
   padding: 1rem;
-  margin: 0.5rem 0;
   border-radius: 5px;
+  min-height: 300px;
+  /* height: 100%; */
 }
 
 .dashboardList__title {
