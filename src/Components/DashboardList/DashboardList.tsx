@@ -16,7 +16,7 @@ import { ListContent } from "../../Types/Dashboard";
 
 type Props = {
   title: string;
-  content: ListContent[];
+  content?: ListContent[];
   route: string;
   navIndex: Menu;
 };
@@ -33,7 +33,7 @@ export default function DashboardList({
     <div className={style.dashboardList}>
       <h3 className={style.dashboardList__title}>{title}</h3>
       <ul>
-        {content.map((element) => {
+        {content?.map((element) => {
           return (
             <Link
               href={`${route}/${element.id}`}

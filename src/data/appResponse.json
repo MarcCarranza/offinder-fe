@@ -1,0 +1,26 @@
+{
+  "user": {
+    "id": "nanoid-user0",
+    "username": "Marc Carranza",
+    "photo": ""
+  },
+  "rooms": [
+    {
+      "id": "nanoid-room0",
+      "name": "OffWeekenders",
+      "event": {
+        "id": "nanoid-event0",
+        "name": "Primavera Sound 2023"
+      },
+      "userCount": 4,
+      "photo": ""
+    }
+  ],
+  "events": [
+    {
+      "id": "nanoid-event0",
+      "name": "Primavera Sound 2023",
+      "photo": ""
+    }
+  ]
+}

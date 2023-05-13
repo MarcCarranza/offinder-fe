@@ -73,7 +73,7 @@ export default function PopMenu({
         className={
           slideOut
             ? `${style.popMenu__bg} ${style.popMenu__bgClose}`
-            : `${style.popMenu__bg}`
+            : style.popMenu__bg
         }
       />
       <div
@@ -102,7 +102,7 @@ export default function PopMenu({
         {/* Priority */}
         <div className={style.popMenu__priority}>
           {/* TODO: i18n */}
-          <legend className={style.priority__legend}>Interest</legend>
+          <legend className={style.priority__legend}>Mamoneo</legend>
           <div className={style.priority__wrapper}>
             {PRIORITY_TYPES.map(({ text, value }) => {
               return (

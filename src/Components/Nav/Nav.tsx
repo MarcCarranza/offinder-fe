@@ -41,7 +41,13 @@ export default function Nav({}: Props): ReactElement {
         key={index}
       >
         <div className={style.nav__button}>
-          <div className={selected ? style.nav__btnSelected : ""}>
+          <div
+            className={
+              selected
+                ? `${style.nav__detailBg} ${style.nav__btnSelected}`
+                : style.nav__detailBg
+            }
+          >
             <Image src={icon} width={20} height={20} alt={altText} />
           </div>
           <p

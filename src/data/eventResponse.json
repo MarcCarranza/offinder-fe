@@ -40,7 +40,8 @@
               "users": [
                 {
                   "id": "nanoid-user0",
-                  "username": "Marc Carranza"
+                  "username": "Marc Carranza",
+                  "priority": -1
                 }
               ],
               "time": "00:00 - 12:00",
@@ -52,7 +53,8 @@
               "users": [
                 {
                   "id": "nanoid-user0",
-                  "username": "Marc Carranza"
+                  "username": "Marc Carranza",
+                  "priority": 1
                 }
               ],
               "time": "00:00 - 12:00",
@@ -64,7 +66,8 @@
               "users": [
                 {
                   "id": "nanoid-user0",
-                  "username": "Marc Carranza"
+                  "username": "Marc Carranza",
+                  "priority": 2
                 }
               ],
               "time": "00:00 - 12:00",

@@ -7,6 +7,7 @@ import Nav from "../Components/Nav/Nav";
 // Style
 import "./globals.css";
 import NavProvider from "../Context/NavProvider";
+import DataProvider from "../Context/DataProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <NavProvider>
-        <body className={inter.className}>
-          {children}
-          <Nav />
-        </body>
-      </NavProvider>
+      <DataProvider>
+        <NavProvider>
+          <body className={inter.className}>
+            {children}
+            <Nav />
+          </body>
+        </NavProvider>
+      </DataProvider>
     </html>
   );
 }

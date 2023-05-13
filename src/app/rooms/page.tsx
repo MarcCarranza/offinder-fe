@@ -1,5 +1,30 @@
-import { ReactElement } from "react";
+"use client";
+
+// Dependencies
+import { ReactElement, useContext } from "react";
+
+// Components
+import DashboardList from "../../Components/DashboardList/DashboardList";
+
+// Context
+import { DataContext } from "../../Context/DataProvider";
+
+// Types
+import { Menu } from "../../Types/Nav";
 
 export default function Rooms(): ReactElement {
-  return <main>Rooms</main>;
+  const {
+    appData: { rooms },
+  } = useContext(DataContext);
+
+  return (
+    <main>
+      <DashboardList
+        title={"Rooms"}
+        content={rooms}
+        route="/rooms"
+        navIndex={Menu.ROOMS}
+      />
+    </main>
+  );
 }

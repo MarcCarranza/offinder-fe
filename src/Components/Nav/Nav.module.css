@@ -20,10 +20,17 @@
   font-size: 0.75rem;
 }
 
+.nav__detailBg {
+  background-color: rgb(var(--orange-bg));
+  transition: all 0.3s ease-out;
+  margin: 0.25rem 1rem;
+}
+
 .nav__btnSelected {
   background-color: rgb(var(--orange-detail));
   padding: 0.25rem 1rem;
   border-radius: 1rem;
+  margin: 0;
 }
 
 .navButton__text {
