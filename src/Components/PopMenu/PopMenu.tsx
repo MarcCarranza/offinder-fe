@@ -1,7 +1,7 @@
 "use client";
 
 // Dependencies
-import { ReactElement, MouseEvent, useState } from "react";
+import { ReactElement, MouseEvent, useState, useEffect } from "react";
 import Image from "next/image";
 
 // Style
@@ -9,17 +9,26 @@ import style from "./PopMenu.module.css";
 
 // Types
 import { Concert } from "../../Types/List";
+import { Priorities } from "../../Types/PopMenu.tsx";
+
+// Constants
+import { PRIORITY_TYPES } from "../../Constants/PopMenu";
 
 // Icons
 import Close from "../../../public/assets/x-square.svg";
-import { PRIORITY_TYPES } from "../../Constants/PopMenu";
 
 type Props = {
   data: Concert | null;
   setOpen: Function;
+  updateData: Function;
 };
 
-export default function PopMenu({ data, setOpen }: Props): ReactElement {
+export default function PopMenu({
+  data,
+  setOpen,
+  updateData,
+}: Props): ReactElement {
+  const [slideOut, setSlideOut] = useState(false);
   // TODO: Request helper for POST update
   const [concertData, setConcertData] = useState<Concert | null>(data);
 
@@ -28,49 +37,84 @@ export default function PopMenu({ data, setOpen }: Props): ReactElement {
     event.stopPropagation();
   };
 
+  const onPressPriority = (index: Priorities): void => {
+    if (concertData) {
+      setConcertData({ ...concertData, priority: index });
+      // updateConcertData({...concertData, priority: index})
+    }
+  };
+
+  const onPressClose = (): void => {
+    setSlideOut(true);
+    setTimeout(() => {
+      setOpen(false);
+    }, 500);
+  };
+
   // Functionalities
-  const getPriorityEmoji = (index: number) => {
-    console.log(index);
+  const getPriorityEmoji = (index: Priorities): string => {
     switch (index) {
-      case -1:
+      case Priorities.NONE:
         return "";
-      case 0:
+      case Priorities.HIGH:
         return "🔝";
-      case 1:
+      case Priorities.MEDIUM:
         return "🔥";
-      case 2:
+      case Priorities.LOW:
         return "👍";
-      case 3:
+      case Priorities.WONT:
         return "👎";
     }
   };
 
   return (
-    <div className={style.popMenu_wrapper} onClick={() => setOpen(false)}>
-      <div className={style.popMenu} onClick={stopBubbling}>
+    <div className={style.popMenu_wrapper} onClick={onPressClose}>
+      <div
+        className={
+          slideOut
+            ? `${style.popMenu__bg} ${style.popMenu__bgClose}`
+            : `${style.popMenu__bg}`
+        }
+      />
+      <div
+        className={
+          slideOut
+            ? `${style.popMenu} ${style.popMenu_slideClose}`
+            : `${style.popMenu}`
+        }
+        onClick={stopBubbling}
+      >
         {/* Popup Header */}
         <div className={style.popMenu__headerWrapper}>
           <div className={style.popMenu__header}>
             <p className={style.popMenu__time}>{concertData?.time}</p>
             <p className={style.popMenu__band}>{concertData?.band}</p>
           </div>
-          <div className={style.popMenu__close} onClick={() => setOpen(false)}>
+          <button className={style.popMenu__close} onClick={onPressClose}>
             <Image
               src={Close}
               width={20}
               height={20}
               alt="Close popup button"
             />
-          </div>
+          </button>
         </div>
         {/* Priority */}
         <div className={style.popMenu__priority}>
           {/* TODO: i18n */}
-          <legend className={style.priority__legend}>Priority</legend>
+          <legend className={style.priority__legend}>Interest</legend>
           <div className={style.priority__wrapper}>
             {PRIORITY_TYPES.map(({ text, value }) => {
               return (
-                <button className={style.priority__selector} key={value}>
+                <button
+                  className={style.priority__selector}
+                  key={value}
+                  onClick={() => onPressPriority(value)}
+                  style={{
+                    backgroundColor:
+                      value === concertData?.priority ? "#C0F0FF" : "white",
+                  }}
+                >
                   {text}
                 </button>
               );

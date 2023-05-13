@@ -4,8 +4,21 @@
   bottom: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.3);
   z-index: 99;
+}
+
+.popMenu__bg {
+  height: 100%;
+  width: 100%;
+  animation-name: initialFade;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-out;
+}
+
+.popMenu__bgClose {
+  opacity: 0;
 }
 
 .popMenu {
@@ -15,11 +28,19 @@
   height: 300px;
   width: 100vw;
   background-color: rgb(var(--orange-bg));
-  /* transition: all 0.3s ease-out; */
+  transition: all 0.3s ease-out;
   bottom: 0;
   left: 0;
   flex-direction: column;
   box-shadow: 0px -5px 19px 0px rgba(161, 161, 161, 1);
+  animation-name: initialSlide;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
+
+.popMenu_slideClose {
+  bottom: -300px;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .popMenu__headerWrapper {
@@ -31,6 +52,7 @@
 
 .popMenu__header {
   display: flex;
+  flex-grow: 1;
 }
 
 .popMenu__time {
@@ -56,6 +78,13 @@
   align-items: center;
   background-color: white;
   cursor: pointer;
+  border-radius: unset;
+  margin: 0;
+}
+
+.popMenu__close:active {
+  scale: 0.5;
+  border-radius: 5px;
 }
 
 .popMenu__priority {
@@ -79,11 +108,7 @@
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   border: none;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px 0px rgba(1, 1, 1, 0.1);
   font-size: 1.3rem;
-  cursor: pointer;
 }
 
 .popMenu__users {
@@ -119,4 +144,22 @@
 
 .user__priority {
   font-size: 1.5rem;
+}
+
+@keyframes initialFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes initialSlide {
+  from {
+    bottom: -300px;
+  }
+  to {
+    bottom: 0px;
+  }
 }

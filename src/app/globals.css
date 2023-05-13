@@ -39,3 +39,19 @@ ul {
     color-scheme: dark;
   }
 } */
+
+button {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(1, 1, 1, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: none;
+}
+
+button:active {
+  box-shadow: 0px 0px 5px 0px rgba(1, 1, 1, 0.3);
+  scale: 0.9;
+}

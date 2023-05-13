@@ -44,7 +44,7 @@
                 }
               ],
               "time": "00:00 - 12:00",
-              "priority": 0,
+              "priority": 1,
               "band": "NBT"
             },
             {
@@ -56,7 +56,7 @@
                 }
               ],
               "time": "00:00 - 12:00",
-              "priority": 0,
+              "priority": 2,
               "band": "RSF"
             },
             {
@@ -68,7 +68,7 @@
                 }
               ],
               "time": "00:00 - 12:00",
-              "priority": 0,
+              "priority": 3,
               "band": "OffWeekender"
             }
           ]
