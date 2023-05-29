@@ -5,16 +5,16 @@ export type UserData = {
 };
 
 export type ListContent = {
-  id: string;
+  _id: string;
   name: string;
 };
 
 type Room = {
-  id: string;
+  _id: string;
   name: string;
 };
 
 type Event = {
-  id: string;
+  _id: string;
   name: string;
 };

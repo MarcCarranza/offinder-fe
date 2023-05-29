@@ -1,26 +1,38 @@
+import { Day, User } from "../List";
+
 export type AppData = {
   user?: {
-    id: string;
+    _id: string;
     username: string;
+    events: any[];
+    rooms: string[];
     photo?: string;
   };
   rooms?: DataRoom[];
   events?: DataEvent[];
+  currentRoom: CurrentRoom;
 };
 
-type DataRoom = {
-  id: string;
+export type DataRoom = {
+  _id: string;
   name: string;
   event: {
-    id: string;
+    _id: string;
     name: string;
   };
   userCount: number;
-  photo?: string;
 };
 
 type DataEvent = {
   id: string;
   name: string;
   photo?: string;
+};
+
+type CurrentRoom = {
+  _id: string;
+  name: string;
+  eventName: string;
+  days: Day[];
+  users: User[];
 };

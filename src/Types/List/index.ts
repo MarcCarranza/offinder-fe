@@ -4,7 +4,7 @@ export type RoomData = {
 };
 
 export type Day = {
-  date: string;
+  name: string;
   locations: Location[];
 };
 
@@ -18,11 +18,10 @@ export type Concert = {
   users: User[];
   time: string;
   priority: number;
-  band: string;
+  name: string;
 };
 
-type User = {
+export type User = {
   id: string;
   username: string;
-  priority: number;
 };

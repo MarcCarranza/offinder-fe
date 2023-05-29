@@ -88,7 +88,7 @@ export default function PopMenu({
         <div className={style.popMenu__headerWrapper}>
           <div className={style.popMenu__header}>
             <p className={style.popMenu__time}>{concertData?.time}</p>
-            <p className={style.popMenu__band}>{concertData?.band}</p>
+            <p className={style.popMenu__band}>{concertData?.name}</p>
           </div>
           <button className={style.popMenu__close} onClick={onPressClose}>
             <Image
@@ -126,7 +126,7 @@ export default function PopMenu({
           {/* TODO: i18n */}
           <legend className={style.users__legend}>Who's interested</legend>
           <ul className={style.users__list}>
-            {concertData?.users.map((user) => {
+            {/* {concertData?.users.map((user) => {
               return (
                 <li className={style.users__user} key={user.id}>
                   <p className={style.users__username}>{user.username}</p>
@@ -135,7 +135,7 @@ export default function PopMenu({
                   </p>
                 </li>
               );
-            })}
+            })} */}
           </ul>
         </div>
       </div>

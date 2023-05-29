@@ -12,11 +12,11 @@ import style from "./DashboardList.module.css";
 
 // Types
 import { Menu } from "../../Types/Nav";
-import { ListContent } from "../../Types/Dashboard";
+import { DataRoom } from "../../Types/DataProvider";
 
 type Props = {
   title: string;
-  content?: ListContent[];
+  content?: DataRoom[];
   route: string;
   navIndex: Menu;
 };
@@ -36,8 +36,8 @@ export default function DashboardList({
         {content?.map((element) => {
           return (
             <Link
-              href={`${route}/${element.id}`}
-              key={element.id}
+              href={`${route}/${element._id}`}
+              key={element._id}
               onClick={() => setCurrent(navIndex)}
             >
               <li className={style.dashboardList__btn}>{element.name}</li>

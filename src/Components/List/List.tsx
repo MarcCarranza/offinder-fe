@@ -37,14 +37,14 @@ export default function List({ listData }: Props): ReactElement {
         {/* Day render */}
         {data.map((day) => {
           return (
-            <div key={day.date}>
-              <p className={style.list__date}>{day.date}</p>
+            <div key={day.name}>
+              <p className={style.list__date}>{day.name}</p>
               <ul className={style.list__locationList}>
                 {/* Locations render */}
                 {day.locations.map((location) => {
                   return (
                     <div
-                      key={`${day.date}-${location.name}`}
+                      key={`${day.name}-${location.name}`}
                       className={style.location}
                     >
                       <p className={style.location__name}>{location.name}</p>
@@ -61,7 +61,7 @@ export default function List({ listData }: Props): ReactElement {
                                 {concert.time}
                               </span>
                               <span className={style.concert__band}>
-                                {concert.band}
+                                {concert.name}
                               </span>
                             </li>
                           );
