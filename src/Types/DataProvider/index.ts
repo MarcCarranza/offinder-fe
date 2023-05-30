@@ -23,8 +23,8 @@ export type DataRoom = {
   userCount: number;
 };
 
-type DataEvent = {
-  id: string;
+export type DataEvent = {
+  _id: string;
   name: string;
   photo?: string;
 };

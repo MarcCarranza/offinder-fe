@@ -1,11 +1,21 @@
 "use client";
 
 // Dependencies
-import { ReactElement, MouseEvent, useState, useEffect } from "react";
+import {
+  ReactElement,
+  MouseEvent,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
 import Image from "next/image";
+import axios from "axios";
 
 // Style
 import style from "./PopMenu.module.css";
+
+// Redux
+import { DataContext } from "../../Context/DataProvider";
 
 // Types
 import { Concert } from "../../Types/List";
@@ -13,6 +23,7 @@ import { Priorities } from "../../Types/PopMenu.tsx";
 
 // Constants
 import { PRIORITY_TYPES } from "../../Constants/PopMenu";
+import { AXIOS_CONST } from "../../Constants/Axios";
 
 // Icons
 import Close from "../../../public/assets/x-square.svg";
@@ -20,17 +31,37 @@ import Close from "../../../public/assets/x-square.svg";
 type Props = {
   data: Concert | null;
   setOpen: Function;
-  updateData: Function;
 };
 
-export default function PopMenu({
-  data,
-  setOpen,
-  updateData,
-}: Props): ReactElement {
+export default function PopMenu({ data, setOpen }: Props): ReactElement {
+  // Redux
+  const { appData } = useContext(DataContext);
+  const { user, currentRoom } = appData;
+
+  // State
   const [slideOut, setSlideOut] = useState(false);
   // TODO: Request helper for POST update
   const [concertData, setConcertData] = useState<Concert | null>(data);
+
+  useEffect(() => {
+    fetchConcertDataFromRoom();
+  }, []);
+
+  // Data fetch
+  const fetchConcertDataFromRoom = () => {
+    if (user && data) {
+      axios
+        .get(
+          `${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.ROOM}/${currentRoom._id}/concert/${data._id}/${user._id}`
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          err;
+        });
+    }
+  };
 
   // Event Handling
   const stopBubbling = (event: MouseEvent<HTMLElement>) => {

@@ -12,11 +12,11 @@ import style from "./DashboardList.module.css";
 
 // Types
 import { Menu } from "../../Types/Nav";
-import { DataRoom } from "../../Types/DataProvider";
+import { DataEvent, DataRoom } from "../../Types/DataProvider";
 
 type Props = {
   title: string;
-  content?: DataRoom[];
+  content?: DataRoom[] | DataEvent[];
   route: string;
   navIndex: Menu;
 };

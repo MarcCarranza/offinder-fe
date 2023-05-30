@@ -14,7 +14,7 @@ type Location = {
 };
 
 export type Concert = {
-  id: string;
+  _id: string;
   users: User[];
   time: string;
   priority: number;
@@ -22,6 +22,6 @@ export type Concert = {
 };
 
 export type User = {
-  id: string;
+  _id: string;
   username: string;
 };

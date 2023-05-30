@@ -15,7 +15,6 @@ type Props = {
 };
 
 export default function List({ listData }: Props): ReactElement {
-  const [data, setData] = useState<Day[]>(listData);
   const [menuOpen, setOpen] = useState<boolean>(false);
   const [selectedConcert, setConcert] = useState<Concert | null>(null);
 
@@ -25,17 +24,11 @@ export default function List({ listData }: Props): ReactElement {
     setOpen(true);
   };
 
-  // Functionalities
-  const updateData = (concert: Concert) => {
-    const updatedData = [];
-    // setData()
-  };
-
   return (
     <div className={style.list}>
       <div className={style.list__day}>
         {/* Day render */}
-        {data.map((day) => {
+        {listData.map((day) => {
           return (
             <div key={day.name}>
               <p className={style.list__date}>{day.name}</p>
@@ -53,7 +46,7 @@ export default function List({ listData }: Props): ReactElement {
                         {location.concerts.map((concert) => {
                           return (
                             <li
-                              key={concert.id}
+                              key={concert._id}
                               className={style.concert}
                               onClick={(e) => onPressConcert(concert)}
                             >
@@ -75,13 +68,7 @@ export default function List({ listData }: Props): ReactElement {
           );
         })}
       </div>
-      {menuOpen && (
-        <PopMenu
-          data={selectedConcert}
-          setOpen={setOpen}
-          updateData={() => {}}
-        />
-      )}
+      {menuOpen && <PopMenu data={selectedConcert} setOpen={setOpen} />}
     </div>
   );
 }

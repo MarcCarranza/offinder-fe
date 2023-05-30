@@ -46,8 +46,12 @@ export default function Room({ params }: Props): ReactElement {
 
   return (
     <main className={style.room}>
-      <h1 className={style.room__title}>{currentRoom?.name}</h1>
-      <List listData={currentRoom?.days} />
+      {currentRoom && (
+        <>
+          <h1 className={style.room__title}>{currentRoom?.name}</h1>
+          <List listData={currentRoom?.days} />
+        </>
+      )}
     </main>
   );
 }

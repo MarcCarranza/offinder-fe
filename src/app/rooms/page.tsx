@@ -22,23 +22,20 @@ export default function Rooms(): ReactElement {
   const { user, rooms } = appData;
 
   useEffect(() => {
-    if (!user) {
-      return;
-    }
-    if (!rooms) {
-      fetchRoomList();
-    }
+    fetchRoomList();
   }, []);
 
   const fetchRoomList = async () => {
-    axios
-      .get(`${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.ROOM}/${user?._id}/list`)
-      .then(({ data }) => {
-        setAppData({ ...appData, rooms: data });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (user && !rooms) {
+      axios
+        .get(`${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.ROOM}/${user._id}/list`)
+        .then(({ data }) => {
+          setAppData({ ...appData, rooms: data });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   return (
