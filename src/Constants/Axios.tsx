@@ -4,6 +4,7 @@ export const AXIOS_CONST = {
     ROOM: "/room",
     EVENT: "/event",
     USER: "/user",
+    AUTH: "/auth",
   },
   DEV_USER: "6474e193e81a426ea7c7818c",
 };

@@ -1,8 +1,9 @@
 "use client";
 // Dependencies
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // Context
 import { NavContext } from "../../Context/NavProvider";

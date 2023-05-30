@@ -3,6 +3,7 @@
 // Dependencies
 import { useContext, useEffect } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 // Style
 import style from "./style.module.css";
@@ -23,12 +24,29 @@ export default function Home() {
   }, []);
 
   const fetchAppData = async (): Promise<void> => {
-    if (Object.keys(appData).length === 0) {
+    const tokenCookie = Cookies.get("token");
+
+    let userId = null;
+    if (!tokenCookie) {
+      return;
+    } else {
+      await axios
+        .get(`${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.AUTH}/v`, {
+          headers: {
+            Authorization: `Bearer ${tokenCookie}`,
+          },
+        })
+        .then(({ data }) => {
+          console.log(data);
+          userId = data.userId;
+        })
+        .catch((err) => console.error(err));
+    }
+
+    if (userId) {
       // Get user id with cookies
       await axios
-        .get(
-          `${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.USER}/${AXIOS_CONST.DEV_USER}`
-        )
+        .get(`${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.USER}/${userId}`)
         .then(({ data }) => {
           setAppData({ user: data });
         })
@@ -42,10 +60,12 @@ export default function Home() {
 
   return (
     <main className={style.main}>
-      <div className={style.home__buttons}>
-        <Button text="Add Room" onClick={() => {}} />
-        <Button text="Add Event" onClick={() => {}} />
-      </div>
+      {appData.user && (
+        <div className={style.home__buttons}>
+          <Button text="Add Room" onClick={() => {}} />
+          <Button text="Add Event" onClick={() => {}} />
+        </div>
+      )}
     </main>
   );
 }

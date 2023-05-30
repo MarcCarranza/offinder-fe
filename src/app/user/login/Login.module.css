@@ -1,0 +1,23 @@
+.loginContainer {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.loginWrapper {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
