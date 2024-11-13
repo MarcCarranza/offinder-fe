@@ -4,8 +4,8 @@
 import List from "../../../Components/List/List";
 import axios from "axios";
 
-// Types
-import { ReactElement, useContext, useEffect, useState } from "react";
+// Dependencies
+import { ReactElement, useContext, useEffect } from "react";
 
 // Context
 import { DataContext } from "../../../Context/DataProvider";
@@ -28,6 +28,7 @@ export default function Room({ params }: Props): ReactElement {
   const { currentRoom } = appData;
 
   useEffect(() => {
+    // TODO: Review currentRoom logic
     if (!currentRoom) {
       fetchRoomData();
     }

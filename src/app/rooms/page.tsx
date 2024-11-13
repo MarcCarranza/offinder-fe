@@ -12,10 +12,10 @@ import { DataContext } from "../../Context/DataProvider";
 
 // Types
 import { Menu } from "../../Types/Nav";
+import { AXIOS_CONST } from "../../Constants/Axios";
 
 // Style
 import style from "./../style.module.css";
-import { AXIOS_CONST } from "../../Constants/Axios";
 
 export default function Rooms(): ReactElement {
   const { appData, setAppData } = useContext(DataContext);

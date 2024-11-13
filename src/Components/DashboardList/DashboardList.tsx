@@ -7,6 +7,9 @@ import Link from "next/link";
 // Providers
 import { NavContext } from "../../Context/NavProvider";
 
+// Components
+import { Button } from "../Button/Button";
+
 // Style
 import style from "./DashboardList.module.css";
 
@@ -45,6 +48,12 @@ export default function DashboardList({
           );
         })}
       </ul>
+      {/* TODO: Floating add button? */}
+      <div>
+        <Link href={`${route}/new`}>
+          <Button text={"Add"} onClick={() => {}}/>
+        </Link>
+      </div>
     </div>
   );
 }

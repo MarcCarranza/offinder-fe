@@ -10,7 +10,7 @@ export type AppData = {
   };
   rooms?: DataRoom[];
   events?: DataEvent[];
-  currentRoom: CurrentRoom;
+  currentRoom?: CurrentRoom;
 };
 
 export type DataRoom = {

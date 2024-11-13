@@ -16,6 +16,8 @@ export default function Login(): ReactElement {
 
   const [username, setUsername] = useState("");
   const [password, setPwd] = useState("");
+  const [email, setEmail] = useState("");
+  const [isRegister, setRegister] = useState(false);
 
   // Handlers
   const onChangeUsername = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -26,6 +28,11 @@ export default function Login(): ReactElement {
     setPwd(e.currentTarget.value);
   };
 
+  const onChangeEmail = (e: SyntheticEvent<HTMLInputElement>) => {
+    setEmail(e.currentTarget.value);
+  }
+
+  // TODO: Loading
   const onClickLogin = async () => {
     axios
       .post(`${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.AUTH}/login`, {
@@ -42,24 +49,63 @@ export default function Login(): ReactElement {
       });
   };
 
-  const onClickRegister = async () => {};
+  const onClickRegister = () => {
+    setRegister(true);
+  };
+
+  // TODO: Loading
+  const onSubmitRegister = async () => {
+    axios
+      .post(`${AXIOS_CONST.DEV_URL}${AXIOS_CONST.PATHS.USER}`, {
+        username,
+        password,
+        email
+      })
+      .then(({ data }) => {
+        const { token, ...rest } = data;
+        setAppData({ user: rest });
+        Cookies.set("token", token, { expires: 7 });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 
   return (
     <div className={styles.loginContainer}>
-      <div className={styles.loginWrapper}>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="">Username</label>
-          <input type="text" value={username} onChange={onChangeUsername} />
+      {!isRegister 
+      ? <div className={styles.loginWrapper}>
+          <div className={styles.inputWrapper}>
+            <label htmlFor="">Username</label>
+            <input type="text" value={username} onChange={onChangeUsername} />
+          </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor="">PIN</label>
+            <input type="password" value={password} onChange={onChangePwd} />
+          </div>
+          <div className={styles.buttonWrapper}>
+            <button onClick={onClickLogin}>Login</button>
+            <button onClick={onClickRegister}>Register</button>
+          </div>
         </div>
-        <div className={styles.inputWrapper}>
-          <label htmlFor="">PIN</label>
-          <input type="password" value={password} onChange={onChangePwd} />
+      : <div>
+          {/* TODO: Forms? */}
+          <div className={styles.inputWrapper}>
+            <label htmlFor="email">Email</label>
+            <input name="email" type="email" value={email} onChange={onChangeEmail} />
+          </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor="username">Username</label>
+            <input name="username" type="text" value={username} onChange={onChangeUsername} />
+          </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor="password">Password</label>
+            <input name="password" type="password" value={password} onChange={onChangePwd} />
+          </div>
+          <div className={styles.buttonWrapper}>
+          <button onClick={onSubmitRegister}>Register</button>
         </div>
-        <div className={styles.buttonWrapper}>
-          <button onClick={onClickLogin}>Login</button>
-          <button onClick={onClickRegister}>Register</button>
-        </div>
-      </div>
+      </div>}
     </div>
   );
 }
