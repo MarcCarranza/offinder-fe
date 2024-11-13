@@ -8,7 +8,7 @@ import style from "./Button.module.css";
 // Types
 type Props = {
   text: string;
-  onClick: MouseEventHandler<HTMLElement>;
+  onClick?: MouseEventHandler<HTMLElement>;
   img?: {
     src: string;
     altText: string;
